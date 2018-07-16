@@ -41,20 +41,22 @@ void setup() {
       DebugSerial.println("you init OTAA parameter is OK!");
       DebugSerial.println(RAKLoRa.sendRawCommand("at+join=otaa\r\n"));
       DebugSerial.println("you join Network is OK!");
-      
      }
  }
+ 
+ lpp.addTemperature(1, 24.5);
+ RAKLoRa.rk_sendData(1,1,lpp.getBuffer());
  }
  
 
 
 void loop() {
  /*lpp.addTemperature(1, temp);
- temp+=0.5;*/
+ temp+=0.5;
  lpp.addTemperature(1, 24.5);
- while (RAKLoRa.rk_sendData(1,1,lpp.getBuffer())){
+ RAKLoRa.rk_sendData(1,1,lpp.getBuffer());*/
  DebugSerial.println(RAKLoRa.rk_recvData());
- }
+ 
  //delay(30000);
 }
 
